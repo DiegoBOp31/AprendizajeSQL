@@ -1,0 +1,8 @@
+SELECT * FROM tbproducto;
+
+SELECT * FROM tbproducto WHERE PRECIO_LISTA BETWEEN 28.49 AND 28.52;
+
+SELECT * FROM tbproducto WHERE ENVASE = 'Lata' OR ENVASE = 'Botella PET';
+
+SELECT * FROM tbproducto WHERE (PRECIO_LISTA BETWEEN 15 AND 25) OR 
+(ENVASE = 'Lata' OR ENVASE = 'Botella PET');
