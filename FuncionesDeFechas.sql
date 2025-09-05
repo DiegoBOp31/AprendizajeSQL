@@ -1,0 +1,21 @@
+-- Hay documentación de todo esto en la página de 
+-- W3schools
+
+SELECT CURDATE();
+SELECT current_timestamp();
+
+SELECT YEAR(current_timestamp());
+SELECT MONTHNAME(current_timestamp());
+SELECT DAYNAME(current_timestamp());
+
+SELECT DATEDIFF(CURRENT_TIMESTAMP(), "1998-05-31") AS DIFERENCIA;
+
+SELECT current_timestamp() AS DIA_HOY, DATE_SUB(current_time(), 
+INTERVAL 1 MONTH) AS RESULTADO;
+
+SELECT DISTINCT FECHA_VENTA,
+DAYNAME(FECHA_VENTA) AS DÍA, MONTHNAME(FECHA_VENTA) AS MES,
+YEAR(FECHA_VENTA) AS AÑO FROM facturas;
+
+SELECT NOMBRE, TIMESTAMPDIFF(YEAR, FECHA_DE_NACIMIENTO, CURDATE()) 
+AS EDAD FROM  tabla_de_clientes;
