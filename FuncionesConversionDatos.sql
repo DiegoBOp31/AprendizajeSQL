@@ -1,0 +1,37 @@
+-- Hay documentación de todo esto en la página de 
+-- W3schools
+
+SELECT CURRENT_TIMESTAMP() AS RESULTADO;
+
+SELECT CONCAT("La fecha y hora de hoy son: ", 
+CURRENT_TIMESTAMP()) AS RESULTADO;
+
+SELECT CONCAT("La fecha y el horario son: ",
+DATE_FORMAT(CURRENT_TIMESTAMP(), "%d/%m/%Y")) AS RESULTADO;
+
+SELECT CONCAT("La fecha y el horario son: ",
+DATE_FORMAT(CURRENT_TIMESTAMP(), "%W, %d/%m/%Y a las %T")) 
+AS RESULTADO;
+
+SELECT CONVERT(23.45,CHAR) AS RESULTADO;
+
+SELECT SUBSTRING(CONVERT(23.45, CHAR), 1,2) AS RESULTADO;
+
+SELECT 
+  CONCAT(
+    'El cliente ', t.NOMBRE, ' facturó ',
+    CAST(t.TOTAL AS CHAR),
+    ' en el año ', CAST(t.ANIO AS CHAR)
+  ) AS FRASE
+FROM (
+  SELECT 
+    TC.NOMBRE, YEAR(F.FECHA_VENTA) AS ANIO,
+    SUM(IFa.CANTIDAD * IFa.PRECIO) AS TOTAL
+  FROM facturas F
+  INNER JOIN items_facturas IFa ON F.NUMERO = IFa.NUMERO
+  INNER JOIN tabla_de_clientes TC ON F.DNI = TC.DNI
+  WHERE YEAR(F.FECHA_VENTA) = 2016
+  GROUP BY TC.NOMBRE, YEAR(F.FECHA_VENTA)
+) AS t ORDER BY t.NOMBRE;
+
+
