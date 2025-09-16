@@ -1,0 +1,19 @@
+CREATE TABLE tb_identificacion(
+ID INT AUTO_INCREMENT NOT NULL,
+DESCRIPCION VARCHAR(50),
+PRIMARY KEY(ID)
+);
+
+SELECT * FROM TB_IDENTIFICACION;
+
+INSERT INTO tb_identificacion(DESCRIPCION)
+VALUES('Cliente B'),('Cliente C'),('Cliente D'),
+('Cliente F'),('Cliente G');
+
+DELETE FROM TB_IDENTIFICACION WHERE ID = 3;
+
+INSERT INTO tb_identificacion(ID,DESCRIPCION)
+VALUES(3,'Cliente H');
+
+INSERT INTO tb_identificacion(DESCRIPCION)
+VALUES('Cliente I');
