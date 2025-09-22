@@ -21,3 +21,31 @@ SHOW GLOBAL VARIABLES LIKE 'tmp_table_size';
 /*esta es la ruta del archivo my.ini de las variables de ambiente
 C:\ProgramData\MySQL\MySQL Server 8.0
 */
+
+
+/*MECANISMOS DE ALMACENAMIENTO
+*MyISAM*
+*InnoDB* por defecto
+*MEMORY* todo en ram
+*/
+
+CREATE TABLE df_table (ID INT, NOMBRE VARCHAR(100));
+-- Cambiamos el mecanismo de almacenamiento de una tabla
+ALTER TABLE df_table ENGINE = MyISAM;
+
+-- Creamos una nueva tabla con un mecanismo de almacenamiento diferente
+CREATE TABLE df_table1 (ID INT, NOMBRE VARCHAR(100)) ENGINE = MEMORY;
+
+SHOW ENGINES;
+
+CREATE DATABASE base;
+USE base;
+DROP DATABASE base;
+
+SHOW VARIABLES WHERE Variable_Name LIKE '%dir';
+/*
+En "datadir" es donde se encuentran todas las bases de datos
+que tenemos almacenadas, y las podemos cambiar de lugar en caso 
+de ser necesario. También tendríamos que cambiar la ruta del 
+archivo my.ini
+*/
