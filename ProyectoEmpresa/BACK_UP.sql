@@ -19,3 +19,19 @@ mysqldump -uroot -p --databases jugos_ventas > c:\Users/{usuario}/OneDrive/Escri
 3. Este comando respalda la base de datos, ignorando una tabla:
 mysqldump -uroot -p --databases jugos_ventas --ignore-table jugos_ventas.facturas > c:\Users/{usuario}/OneDrive/Escritorio\jugos_ventas_full.sql
 */
+
+/*BACK UP LÓGICO CON WORKBENCH*/
+-- Paramos la instancia para crear el backup
+LOCK instance for backup;
+
+/*
+clic "Administration" -> clic "Data Export"
+-> seleccionamos la db -> clic "Export to self-contained File"
+-> Indicar la ruta -> clic "Start Export"
+
+**crear un subdirectorio e incluya un archivo de comandos SQL para cada tabla
+Export do Dump Project Folder
+*/
+-- Cuando terminamos de hacer el back up desbloqueamos la instancia
+UNLOCK INSTANCE;
+
