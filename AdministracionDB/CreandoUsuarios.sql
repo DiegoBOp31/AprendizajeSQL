@@ -25,3 +25,24 @@ ON *.* TO 'back01'@'localhost';
 CREATE USER 'admingeneric02'@'%' IDENTIFIED BY 'admingeneric02';
 -- Le damos todos los privilegios al usuario nuevo
 GRANT ALL PRIVILEGES ON *.* TO 'admingeneric02'@'%' WITH GRANT OPTION;
+
+-- Creamos un nuevo usuario con comandos
+CREATE USER 'user04'@'%' IDENTIFIED BY 'user04';
+-- Le damos los privilegios al usuario nuevo, limitando la db que puede usar
+GRANT SELECT, INSERT, UPDATE, DELETE, 
+CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE
+ ON jugos_ventas.* TO 'user04'@'%';
+ 
+ -- Creamos un nuevo usuario con comandos
+CREATE USER 'user05'@'%' IDENTIFIED BY 'user05';
+-- Le damos los privilegios al usuario nuevo
+-- limitando la db y la tabla que puede usar 
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON jugos_ventas.facturas TO 'user05'@'%';
+
+ -- Creamos un nuevo usuario con comandos
+CREATE USER 'user06'@'%' IDENTIFIED BY 'user06';
+-- Le damos los privilegios al usuario nuevo
+-- limitando la db y la tabla que puede usar 
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON jugos_ventas.tabla_de_vendedores TO 'user06'@'%';
