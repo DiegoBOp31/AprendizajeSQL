@@ -20,3 +20,8 @@ CREATE USER 'back01'@'localhost' IDENTIFIED BY 'back01';
 -- Le damos los privilegios al usuario nuevo
 GRANT SELECT, RELOAD, LOCK TABLES, REPLICATION CLIENT 
 ON *.* TO 'back01'@'localhost';
+
+-- Creamos un nuevo usuario administrador generico con comandos
+CREATE USER 'admingeneric02'@'%' IDENTIFIED BY 'admingeneric02';
+-- Le damos todos los privilegios al usuario nuevo
+GRANT ALL PRIVILEGES ON *.* TO 'admingeneric02'@'%' WITH GRANT OPTION;
